@@ -2,6 +2,17 @@ provider "aws" {
   region = "us-west-2"
 }
 
+resource "aws_instance" "ubuntu" {
+  ami           = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "Vault Server 1"
+    Owner = "Alex Harness"
+    BadTag = "Billing Department"
+  }
+}
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -16,14 +27,4 @@ data "aws_ami" "ubuntu" {
   }
 
   owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "ubuntu" {
-  ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "Vault Server"
-    Owner = "Alex Harness"
-  }
 }
