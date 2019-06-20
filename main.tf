@@ -9,7 +9,7 @@ resource "aws_instance" "ubuntu" {
   tags = {
     Name = "Vault Server 1"
     Owner = "Alex Harness"
-    BadTag = "Billing Department"
+    BadTag = "Billing Department 1"
   }
 }
 
