@@ -4,12 +4,12 @@ provider "aws" {
 
 resource "aws_instance" "ubuntu" {
   ami           = "${data.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
+  instance_type = "t2.small"
 
   tags = {
     Name = "Vault Server 1"
     Owner = "Alex Harness"
-    BadTag = "Billing Department 1"
+    Billing = "Billing Account APPLEOSDevelopers"
   }
 }
 
